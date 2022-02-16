@@ -1,0 +1,186 @@
+// BlackJack-JJ.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+
+
+
+//Black Jack.
+
+
+
+//----------------------------------------
+// 
+//██████╗░██╗░░░░░░█████╗░░█████╗░██╗░░██╗░░░░░██╗░█████╗░░█████╗░██╗░░██╗
+//██╔══██╗██║░░░░░██╔══██╗██╔══██╗██║░██╔╝░░░░░██║██╔══██╗██╔══██╗██║░██╔╝
+//██████╦╝██║░░░░░███████║██║░░╚═╝█████═╝░░░░░░██║███████║██║░░╚═╝█████═╝░
+//██╔══██╗██║░░░░░██╔══██║██║░░██╗██╔═██╗░██╗░░██║██╔══██║██║░░██╗██╔═██╗░
+//██████╦╝███████╗██║░░██║╚█████╔╝██║░╚██╗╚█████╔╝██║░░██║╚█████╔╝██║░╚██╗
+//╚═════╝░╚══════╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝
+// 
+// 
+// Card 
+//       ╔═══════════╗
+//       ║           ║
+//       ║           ║
+//       ║           ║  
+//       ║           ║
+//       ║           ║
+//       ║           ║
+//       ║           ║
+//       ╚═══════════╝
+//       ♠   ♦   ♥   ♣
+//
+//      jack,queen,king = 10 || Ace=11or1
+// 
+//      stay(), bust()
+//		First to 21above = lose
+//      First draw 2 each user(PvsCPU)
+//      User options Stay(keep cards as is) or Draw 1 more card
+//---------------------------------------
+
+
+
+
+void NewGame();
+void Help();
+void About();
+void ExitP();
+int main();
+void transition();
+
+
+string CardDeck[13] = { "Ace","Jack","Queen","King","Two","Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"};
+int aceValueChoice;
+int Values[13]{aceValueChoice,10,10,10,2,3,4,5,6,7,8,9,10};
+
+
+
+ 
+
+
+int main()
+{
+	system("CLS");
+	int enterChoice;
+	
+	    
+		cout << "BlackJack" << endl;
+		cout << "----------" << endl;
+		cout << "1) New Game" << endl;
+		cout << "2) Help" << endl;
+		cout << "3) About" << endl;
+		cout << "4) Exit" << endl;
+		cout << "----------" << endl;
+		cout << "Enter choice : " << endl;
+		cin >> enterChoice;
+			
+	
+	if (enterChoice == 1)
+	{
+		NewGame();
+	}
+
+	else if (enterChoice == 2)
+	{
+		Help();
+	}
+
+	else if (enterChoice == 3)
+	{
+		About();
+	}
+
+	else if (enterChoice == 4)
+	{
+		 ExitP();
+	} 
+}
+
+//-----------------------------------------------------------------------------
+//-------------------------------| Main |--------------------------------------
+//-----------------------------------------------------------------------------
+void NewGame()
+{	system("CLS");
+	srand(time(0));
+
+	//CPU
+	int x = 0;
+	int XCardnum = 1;
+	int XValuetotal=0;
+	int XtempVal;
+	//USER
+	int Ux = 0;
+	int UCardnum = 1;
+	int UTotalV;
+
+	string AAchoice;
+	cout << "Dealers hand : " << endl;
+	while (x != 2)
+	{
+		
+		int RandDraw = (rand() % 13);
+		cout << "Card" << XCardnum << ": " << CardDeck[RandDraw] << Values[RandDraw] << endl;
+	
+
+		XValuetotal =+ XtempVal;
+		
+		XCardnum++;
+		x++;
+	}
+	cout << "Total :" << XValuetotal << endl;
+
+	cout << "--------------" << endl;
+
+	cout << "Your hand :" << endl;
+	while (Ux != 2)
+	{
+		int RandDraw = 1 + (rand() % 13);
+		cout << "Card"<< UCardnum <<": " << CardDeck[RandDraw] << Values[RandDraw] << endl;
+
+		UCardnum++;
+		Ux++;
+	}
+	cout << "Your Total :" << endl;
+}
+//-----------------------------------------------------------------------------
+//-------------------------------| End Main |----------------------------------
+//-----------------------------------------------------------------------------
+void Help()
+{
+	string BBchoice;
+	system("CLS");
+	cout << "Help" << endl;
+	cout << "If done reading type Y " << endl;
+	cin >> BBchoice;
+	if (BBchoice == "Y" || "y") { system("CLS"); main(); }
+}
+void About()
+{
+	
+	system("CLS");
+	string CCchoice;
+
+	cout << "About" << endl;
+	cout << "If done reading type Y " << endl;
+	cin >> CCchoice;
+	if (CCchoice == "Y" || "y") { system("CLS"); main(); }
+	
+}
+void ExitP() 
+{
+	system("CLS");
+	cout << "----------" << endl;
+	cout << "Exiting" << endl;
+}
+void transition()
+{
+	system("CLS");
+	main();
+}
+
